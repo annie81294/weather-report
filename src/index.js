@@ -41,4 +41,14 @@ decrease.addEventListener('click', () => {
 });
 
 display.className = changeTempColor(temperature);                  
-landscape.textContent = changeLandscape(temperature);  
+landscape.textContent = changeLandscape(temperature); 
+
+//change city name
+const cityinput = document.getElementById('cityinput')
+const changeCity = document.getElementById('changecity');
+const cityName = document.querySelector('.cityname_head');
+
+changeCity.addEventListener('click', () => {
+    const newcity = cityinput.value;
+    cityName.textContent = newcity;
+});
