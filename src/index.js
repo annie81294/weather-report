@@ -119,4 +119,21 @@ realtimeweather.addEventListener('click', () => {
   });
 });
 
-console.log("index.js loaded!");
+
+//change sy
+//change sky
+const changeSky = (sky) => {
+    if (sky === 'sunny') return '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
+    if (sky === 'cloudy') return '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
+    if (sky === 'rainy') return '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
+    if (sky === 'snowy') return '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
+};
+
+const skySelect = document.getElementById('skySelect');
+const skyDisplay = document.getElementById('skyDisplay');
+
+skySelect.addEventListener('change', () => {
+    skyDisplay.textContent = changeSky(skySelect.value);
+});
+
+skyDisplay.textContent = changeSky(skySelect.value);
