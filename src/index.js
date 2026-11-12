@@ -54,18 +54,14 @@ changeCity.addEventListener('click', () => {
 });
 
 //find realtime weather
-const LOCATIONIQ_KEY= process.env.LOCATIONIQ_API_KEY;
-const OPENWEATHER_KEY= process.env.OPENWEATHER_API_KEY;
-
 const findLatitudeAndLongitude = (query) => {
-  return axios.get('https://us1.locationiq.com/v1/search', {
+  return axios.get('http://127.0.0.1:5000/location', {
     params: {
-      key: LOCATIONIQ_KEY,
       q: query,
-      format: 'json'
     }
   })
     .then((response) => {
+      console.log("Location API response:", response.data);
       const latitude = response.data[0].lat;
       const longitude = response.data[0].lon;
       console.log('success in findLatitudeAndLongitude!', latitude, longitude);
@@ -73,18 +69,17 @@ const findLatitudeAndLongitude = (query) => {
       return {latitude,longitude};
     })
     .catch( (error) => {
+      console.log(error.response.data);
       console.log('error in findLatitudeAndLongitude!');
       throw error;
     });  
 };
 
 const findWeather = (latitude, longitude) => {
-  return axios.get('https://api.openweathermap.org/data/2.5/weather', {
+  return axios.get('http://127.0.0.1:5000/weather', {
     params: {
-      appid: OPENWEATHER_KEY,
       lat: latitude,
       lon: longitude,
-      units: 'imperial'
     }
   })
     .then((response) => {
@@ -111,8 +106,11 @@ realtimeweather.addEventListener('click', () => {
   })
 
   .then((weather) => {
-    console.log(weather);
-    display.textContent = `${weather.main.temp}°F`;
+    console.log(weather)
+    temperature = weather.main.temp;
+    display.textContent = `${temperature}°F`;
+    display.className = changeTempColor(temperature);
+    landscape.textContent = changeLandscape(temperature);
   })
 
   .catch((error) => {
