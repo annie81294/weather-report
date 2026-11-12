@@ -105,7 +105,9 @@ realtimeweather.addEventListener('click', () => {
   })
 
   .then((weather) => {
-    console.log(weather)
+    const kelvin = weather.main.temp;
+    temperature = Math.round((kelvin - 273.15) * (9 / 5) + 32);
+
     display.textContent = `${temperature}°F`;
     display.className = changeTempColor(temperature);
     landscape.textContent = changeLandscape(temperature);
@@ -116,3 +118,5 @@ realtimeweather.addEventListener('click', () => {
     throw error;
   });
 });
+
+console.log("index.js loaded!");
