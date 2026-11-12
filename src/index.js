@@ -120,7 +120,6 @@ realtimeweather.addEventListener('click', () => {
 });
 
 
-//change sy
 //change sky
 const changeSky = (sky) => {
     if (sky === 'sunny') return '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
@@ -137,3 +136,11 @@ skySelect.addEventListener('change', () => {
 });
 
 skyDisplay.textContent = changeSky(skySelect.value);
+
+//reset city
+const resetinput = document.getElementById('resetcity')
+
+resetinput.addEventListener('click', () => {
+    cityName.textContent = 'Seattle';
+    cityinput.value='';
+});

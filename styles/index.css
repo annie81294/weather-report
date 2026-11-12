@@ -63,6 +63,16 @@ header{
     font-size: 20px;
 }
 
+#resetcity {
+    width: 90px;
+    height: 30px;
+    border-radius: 50px;
+    background-color: lightgoldenrodyellow;
+    margin: 1px auto;
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+}
+
 #temperature {
   background-color: lightblue;
   border: 2px solid blue;
