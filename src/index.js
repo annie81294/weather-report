@@ -69,7 +69,6 @@ const findLatitudeAndLongitude = (query) => {
       return {latitude,longitude};
     })
     .catch( (error) => {
-      console.log(error.response.data);
       console.log('error in findLatitudeAndLongitude!');
       throw error;
     });  
@@ -107,7 +106,6 @@ realtimeweather.addEventListener('click', () => {
 
   .then((weather) => {
     console.log(weather)
-    temperature = weather.main.temp;
     display.textContent = `${temperature}°F`;
     display.className = changeTempColor(temperature);
     landscape.textContent = changeLandscape(temperature);
