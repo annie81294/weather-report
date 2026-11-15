@@ -54,8 +54,10 @@ changeCity.addEventListener('click', () => {
 });
 
 //find realtime weather
+const BASE_URL = 'https://ada-weather-report-proxy-server.onrender.com';
+
 const findLatitudeAndLongitude = (query) => {
-  return axios.get('http://127.0.0.1:5000/location', {
+  return axios.get(`${BASE_URL}/location`, {
     params: {
       q: query,
     }
@@ -75,7 +77,7 @@ const findLatitudeAndLongitude = (query) => {
 };
 
 const findWeather = (latitude, longitude) => {
-  return axios.get('http://127.0.0.1:5000/weather', {
+  return axios.get(`${BASE_URL}/weather`, {
     params: {
       lat: latitude,
       lon: longitude,
